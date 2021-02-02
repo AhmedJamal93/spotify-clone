@@ -1,0 +1,8 @@
+.login__tab {
+    flex:0.5;
+    font-size: 20px;
+}
+
+.active {
+    border-bottom: 3px solid green;
+}

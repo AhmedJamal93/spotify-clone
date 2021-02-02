@@ -1,0 +1,33 @@
+.login__form {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login__username, .login__password {
+    border-radius: 25px;
+    height:40px;
+    width:250px;
+    text-align: center;
+}
+
+::-webkit-input-placeholder {
+    font-style: italic;
+}
+
+::-webkit-input-placeholder {
+    font-style: bold;
+}
+
+.login__submit {
+    border-radius: 25px;
+    height:45px;
+    width:260px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    background-color:rgba(89, 189, 69, 0.986);
+    color: white;
+    border: 1px solid white;
+    box-shadow: 8px 8px 8px black;
+}
+
