@@ -5,7 +5,7 @@ import Signin from './Signin/Signin';
 import Signup from './Signup/Signup';
 import logo from '../images/spotify-logo.svg'
 
-function Login({handleLoginChange, loginActive}) {
+function Login({handleLoginChange, loginActive, handleSignUp, handleSignIn}) {
 
 
     return (
@@ -30,10 +30,12 @@ function Login({handleLoginChange, loginActive}) {
             <br/>
             <div className="login__signinForm">
                 {loginActive === 0 && 
-                <Signin />
+                <Signin 
+                    handleSignIn={handleSignIn}/>
                 }
                 {loginActive === 1 && 
-                <Signup />
+                <Signup 
+                    handleSignUp={handleSignUp}/>
                 }
             </div>
         </div>
