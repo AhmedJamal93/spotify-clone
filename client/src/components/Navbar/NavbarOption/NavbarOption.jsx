@@ -9,7 +9,7 @@ function NavbarOption({Icon, title, index, handleNavbarChange, navbarActive}) {
     
     return (
         <div 
-            className={`navbarOption ${navbarActive === index && 'active'}`}
+            className={`navbarOption ${navbarActive === index && 'navbarActive'}`}
             onClick={changeIndex}
         >
             <Icon className="navbarOption__icon"/>

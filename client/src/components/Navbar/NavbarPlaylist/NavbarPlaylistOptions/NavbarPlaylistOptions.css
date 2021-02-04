@@ -1,16 +1,12 @@
-.navbarOption {
-    display:flex;
-    align-items: center;
-    color: grey;
+.navbarPlaylistOption {
+    flex:1;
+    padding-left: 20px;
+    color: rgba(211, 211, 211, 0.836);
+    margin-bottom: -15px;
+    font-size: 13px;
 }
 
-.navbarOption__icon {
-    margin-left: 25px;
-    margin-right: 20px;
-}
-
-.active {
-    border-left: 5px solid rgb(61, 211, 61);
-    border-bottom: 1px solid black;
+.playlistActive {
+    border-left: 3px solid rgb(61, 211, 61);
     color: white;
 }

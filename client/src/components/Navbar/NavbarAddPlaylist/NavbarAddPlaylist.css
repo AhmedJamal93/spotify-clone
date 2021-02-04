@@ -1,0 +1,21 @@
+.navbarAddPlaylist {
+    display:flex;
+    align-items: center;
+    color: rgba(211, 211, 211, 0.836);
+    border-bottom: 1px solid rgb(53, 52, 52);
+}
+
+.navbarAddPlaylist :hover {
+    color:white;
+}
+
+.navbarAddPlaylist__icon {
+    margin-left: 20px;
+    font-weight: 250 !important;
+}
+
+.navbarAddPlaylist__text {
+    margin-left: 15px;
+    font-weight: 250;
+}
+

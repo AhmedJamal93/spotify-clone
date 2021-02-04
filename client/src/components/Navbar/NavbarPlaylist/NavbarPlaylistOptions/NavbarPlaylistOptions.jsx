@@ -1,18 +1,17 @@
 import React from 'react';
 import './NavbarPlaylistOptions.css';
 
-function NavbarPlaylistOptions({title}) {
+function NavbarPlaylistOptions({title, handlePlaylistChange, index, playlistActive, handleNavbarChange, navbarActive}) {
     
-    // const changeIndex = () => {
-    //     handleNavbarChange(index)
-    // }
+    const changeIndex = () => {
+        handleNavbarChange(index)
+    }
     
     return (
         <div 
-            className={`navbarOption `}
-            
+            className={`navbarPlaylistOption ${navbarActive === index && 'playlistActive'}`}
+            onClick={changeIndex}
         >
-            
             <h4>{title}</h4>
         </div>
     )

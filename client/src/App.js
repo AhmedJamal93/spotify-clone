@@ -13,7 +13,8 @@ class App extends React.Component{
     email:'',
     password:'',
     loggedin:true,
-    navbarActive:0
+    navbarActive:0,
+    playlistActive:null
   }
 
   handleLoginChange = (index) => {
@@ -25,6 +26,12 @@ class App extends React.Component{
   handleNavbarChange = (index) => {
     this.setState({
       navbarActive:index
+    })
+  }
+
+  handlePlaylistChange = (index) => {
+    this.setState({
+      playlistActive:index
     })
   }
 
@@ -90,7 +97,10 @@ render(){
         <div className="home">
           <Navbar 
             handleNavbarChange={this.handleNavbarChange}
-            navbarActive={this.state.navbarActive}/>
+            handlePlaylistChange={this.handlePlaylistChange}
+            navbarActive={this.state.navbarActive}
+            playlistActive={this.state.playlistActive}
+            />
           <Main />
         </div>
       }
