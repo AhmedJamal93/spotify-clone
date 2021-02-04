@@ -1,0 +1,16 @@
+.navbarOption {
+    display:flex;
+    align-items: center;
+    color: grey;
+}
+
+.navbarOption__icon {
+    margin-left: 25px;
+    margin-right: 20px;
+}
+
+.active {
+    border-left: 5px solid rgb(61, 211, 61);
+    border-bottom: 1px solid black;
+    color: white;
+}

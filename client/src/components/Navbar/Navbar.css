@@ -1,0 +1,21 @@
+.navbar {
+    flex:0.2;
+    color: white;
+    margin-top: 20px;
+    display:flex;
+    flex-direction: column;
+}
+
+.home :hover {
+    color:white
+}
+
+.navbar__options {
+    flex:0.3;
+}
+
+.navbar__playlists {
+    margin-top: 5px;
+    flex:0.35;
+    overflow-y: scroll;
+}

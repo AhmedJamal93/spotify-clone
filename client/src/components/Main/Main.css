@@ -1,0 +1,5 @@
+.main {
+    flex:0.8;
+    color: white;
+    background-image: linear-gradient(to bottom right, rgb(68, 68, 68),black);
+}

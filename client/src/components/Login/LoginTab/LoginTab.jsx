@@ -8,7 +8,7 @@ function LoginTab({title, index, handleLoginChange, loginActive}) {
     }
 
     return (
-        <div onClick={changeIndex} className={`login__tab ${loginActive === index && 'active'}`}>
+        <div onClick={changeIndex} className={`login__tab ${loginActive === index && 'loginActive'}`}>
             <h4>{title}</h4>
         </div>
     )

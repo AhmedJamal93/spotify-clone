@@ -3,3 +3,9 @@
     background-color: black;
     height:100vh;
 }
+
+.home {
+    display:flex;
+    flex:1;
+}
+

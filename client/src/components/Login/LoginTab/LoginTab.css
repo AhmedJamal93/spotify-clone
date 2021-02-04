@@ -3,6 +3,6 @@
     font-size: 20px;
 }
 
-.active {
+.loginActive {
     border-bottom: 3px solid green;
 }
