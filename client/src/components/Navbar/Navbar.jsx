@@ -8,7 +8,7 @@ import ListIcon from '@material-ui/icons/List';
 import RadioIcon from '@material-ui/icons/Radio';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
-function Navbar({handleNavbarChange, handlePlaylistChange, navbarActive, playlistActive}) {
+function Navbar({handleNavbarChange, navbarActive}) {
     return (
         <div className="navbar">
             <div className="navbar__options">
@@ -34,8 +34,6 @@ function Navbar({handleNavbarChange, handlePlaylistChange, navbarActive, playlis
             </div>
             <div className="navbar__playlists">
                 <NavbarPlaylist 
-                    // handlePlaylistChange={handlePlaylistChange}
-                    // playlistActive={playlistActive}
                     handleNavbarChange={handleNavbarChange}
                     navbarActive={navbarActive}
                     />

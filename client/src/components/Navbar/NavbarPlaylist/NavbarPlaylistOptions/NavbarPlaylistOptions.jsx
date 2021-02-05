@@ -1,10 +1,10 @@
 import React from 'react';
 import './NavbarPlaylistOptions.css';
 
-function NavbarPlaylistOptions({title, handlePlaylistChange, index, playlistActive, handleNavbarChange, navbarActive}) {
+function NavbarPlaylistOptions({title, index, handleNavbarChange, navbarActive}) {
     
     const changeIndex = () => {
-        handleNavbarChange(index)
+        handleNavbarChange(index, title)
     }
     
     return (

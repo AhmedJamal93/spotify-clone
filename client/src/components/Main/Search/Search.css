@@ -1,0 +1,26 @@
+.search {
+    display:flex;
+    margin-left: 20px;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.search__forwardArrow {
+    margin-left: 5px;
+    font-size: larger;
+    color:darkgray;
+}
+
+.search__backArrow {
+    font-size: larger;
+    color:darkgray;
+}
+
+.search__input {
+    margin-left: 15px;
+    height:20px;
+    width:175px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid black
+}

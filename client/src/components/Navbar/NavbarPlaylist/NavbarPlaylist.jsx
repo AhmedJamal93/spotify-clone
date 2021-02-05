@@ -2,7 +2,7 @@ import React from 'react';
 import './NavbarPlaylist.css'
 import NavbarPlaylistOption from './NavbarPlaylistOptions/NavbarPlaylistOptions';
 
-function NavbarPlaylist({handlePlaylistChange, playlistActive, handleNavbarChange, navbarActive}) {
+function NavbarPlaylist({handleNavbarChange, navbarActive}) {
     return (
         <div className="navbarPlaylist">
             <div className="navbarPlaylist__header">

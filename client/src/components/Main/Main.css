@@ -1,5 +1,15 @@
 .main {
     flex:0.8;
     color: white;
-    background-image: linear-gradient(to bottom right, rgb(68, 68, 68),black);
+    background-image: linear-gradient( rgb(71, 71, 71),rgb(0, 0, 0));
+}
+
+.main__search {
+    display:flex;
+    justify-content: space-between;
+}
+
+.main__header {
+    margin-left: 25px;
+    font-size: 23px;
 }

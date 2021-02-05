@@ -1,0 +1,12 @@
+.player {
+    background-color: rgb(39, 37, 37);
+    flex:0.3;
+    height:70px;
+    border-top: 1px solid rgb(53, 52, 52);
+    display:flex;
+    flex:1;
+    justify-content: space-between;
+    bottom: 0px;
+    position:fixed;
+    width:100%;
+}

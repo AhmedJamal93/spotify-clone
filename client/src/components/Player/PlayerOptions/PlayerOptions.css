@@ -1,0 +1,11 @@
+.playeroptions {
+    color:darkgray;
+    display:flex;
+    justify-content: space-evenly;
+    flex:0.3;
+    margin-top: 5px;
+}
+
+.play {
+    font-size:x-large;
+}

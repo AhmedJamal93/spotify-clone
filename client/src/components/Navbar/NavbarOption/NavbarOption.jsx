@@ -4,7 +4,7 @@ import './NavbarOption.css';
 function NavbarOption({Icon, title, index, handleNavbarChange, navbarActive}) {
     
     const changeIndex = () => {
-        handleNavbarChange(index)
+        handleNavbarChange(index, title)
     }
     
     return (

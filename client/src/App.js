@@ -4,17 +4,18 @@ import axios from 'axios';
 import Login from './components/Login/Login';
 import Navbar from './components/Navbar/Navbar';
 import Main from './components/Main/Main';
+import Player from './components/Player/Player';
 
 class App extends React.Component{
   state = {
     loginActive:0,
-    first:'',
-    last:'',
+    first:'test',
+    last:'test',
     email:'',
     password:'',
     loggedin:true,
     navbarActive:0,
-    playlistActive:null
+    activePage:'Home',
   }
 
   handleLoginChange = (index) => {
@@ -23,15 +24,10 @@ class App extends React.Component{
     })
   }
 
-  handleNavbarChange = (index) => {
+  handleNavbarChange = (index, title) => {
     this.setState({
-      navbarActive:index
-    })
-  }
-
-  handlePlaylistChange = (index) => {
-    this.setState({
-      playlistActive:index
+      navbarActive:index,
+      activePage:title
     })
   }
 
@@ -69,6 +65,10 @@ class App extends React.Component{
       .then(res => {
         if(res.data.rows.length > 0){
           if (this.state.password === res.data.rows[0].password){
+            this.setState({
+              first:res.data.rows[0].firstname,
+              last:res.data.rows[0].lastname
+            })
             alert(`Welcome Back ${res.data.rows[0].firstname} ${res.data.rows[0].lastname}`)
             this.setState({
               loggedin:true
@@ -94,14 +94,20 @@ render(){
           handleSignIn={this.handleSignIn}/>
       }
       {this.state.loggedin && 
-        <div className="home">
-          <Navbar 
-            handleNavbarChange={this.handleNavbarChange}
-            handlePlaylistChange={this.handlePlaylistChange}
-            navbarActive={this.state.navbarActive}
-            playlistActive={this.state.playlistActive}
-            />
-          <Main />
+        <div className="screen" >
+          <div className="home">
+            <Navbar 
+              handleNavbarChange={this.handleNavbarChange}
+              navbarActive={this.state.navbarActive}
+              />
+            <Main 
+              header={this.state.activePage}
+              first={this.state.first}
+              last={this.state.last}/>
+          </div>
+          <div className="player">
+            <Player />
+          </div>
         </div>
       }
     </div>

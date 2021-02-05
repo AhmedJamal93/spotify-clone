@@ -16,7 +16,7 @@
 
 .navbar__playlists {
     margin-top: 5px;
-    flex:0.35;
+    flex:0.3;
     overflow-y: scroll;
     border-bottom: 1px solid rgb(53, 52, 52);
 }
