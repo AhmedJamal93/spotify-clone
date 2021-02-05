@@ -9,6 +9,10 @@ app.use(express.json()); //req.body
 
 //ROUTES
 
+app.get('/', (req,res)=>{
+    res.send('hello world')
+})
+
 //SIGNUP NEW USER
 app.post('/users', async(req,res)=>{
     try {
