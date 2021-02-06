@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Signin.css';
 
-function Signin({handleSignIn}) {
+function Signin({handleSignIn, errorMessage}) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -10,7 +10,8 @@ function Signin({handleSignIn}) {
     }
 
     return (
-        <div className="login__form">
+        <div className="signin">
+            <div className="login__form">
                 <input
                     className="login__username"
                     placeholder="Email" 
@@ -21,15 +22,21 @@ function Signin({handleSignIn}) {
                 <input
                     className="login__password"
                     placeholder="Password" 
-                    type="text"
+                    type="password"
                     onChange={e => setPassword(e.target.value)}/>
-                    <br/>
-                    <br/>
+                <br/>
+                <br/>
                 <input
                     className="login__submit"
                     value="Sign In"
                     type="submit"
                     onClick={checkUser}/>
+            </div>
+            <div className="errorMessage">
+                <br/>
+                <br/>
+                <h4 >{errorMessage}</h4>
+            </div>
         </div>
     )
 }

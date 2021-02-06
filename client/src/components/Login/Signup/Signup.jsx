@@ -38,15 +38,17 @@ function Signup({handleSignUp}) {
                     type="text"
                     required
                     onChange={(e) => setEmail(e.target.value)}
-                    onClick={(e) => setEmail(e.target.value)}/>                <br/>
+                    onClick={(e) => setEmail(e.target.value)}/>                
+                <br/>
                 <br/>
                 <input
                     className="login__password"
                     placeholder="Password" 
-                    type="text"
+                    type="password"
                     required
                     onChange={(e) => setPassword(e.target.value)}
-                    onClick={(e) => setPassword(e.target.value)}/>                <br/>
+                    onClick={(e) => setPassword(e.target.value)}/>                
+                <br/>
                 <br/>
                 <input
                     className="login__submit"
