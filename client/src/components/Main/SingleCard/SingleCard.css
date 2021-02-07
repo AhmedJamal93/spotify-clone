@@ -1,0 +1,17 @@
+.singleCard {
+    width:150px;
+    margin-left:20px;
+    margin-bottom: 20px;
+}
+
+.singleCard__image {
+    width:150px;
+    margin-right: 20px;
+}
+
+.singleCard__album, .singleCard__artist {
+    color: gray;
+    margin-top: -15px;
+    font-weight: 500;
+}
+

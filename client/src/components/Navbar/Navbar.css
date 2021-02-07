@@ -4,6 +4,9 @@
     margin-top: 20px;
     display:flex;
     flex-direction: column;
+    position:sticky;
+    /* left:0; */
+    top:0;
 }
 
 .home :hover {
@@ -12,6 +15,8 @@
 
 .navbar__options {
     flex:0.3;
+    position:sticky;
+    /* top:0; */
 }
 
 .navbar__playlists {
@@ -19,6 +24,8 @@
     flex:0.3;
     overflow-y: scroll;
     border-bottom: 1px solid rgb(53, 52, 52);
+    position:sticky;
+    /* top:33%; */
 }
 
 .navbar__playlists::-webkit-scrollbar {

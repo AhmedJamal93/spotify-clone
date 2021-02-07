@@ -1,7 +1,7 @@
 .app {
     display:flex;
     background-color: black;
-    height:100vh;
+    min-height:100vh;
 }
 
 .home {
@@ -18,5 +18,11 @@
 .player {
     bottom:0px;
     z-index: 100;
+}
+
+.navbar {
+    position:sticky;
+    top:0;
+    height:auto
 }
 

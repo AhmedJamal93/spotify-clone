@@ -2,8 +2,9 @@ import React from 'react';
 import './Main.css';
 import Search from './Search/Search';
 import Profile from './Profile/Profile';
+import SingleCard from './SingleCard/SingleCard';
 
-function Main({header, first, last, handleOpenMenu, menuOpen, handleSignOut}) {
+function Main({header, first, last, handleOpenMenu, menuOpen, handleSignOut, trending}) {
     return (
         <div className="main">
             <div className="main__search">
@@ -17,6 +18,18 @@ function Main({header, first, last, handleOpenMenu, menuOpen, handleSignOut}) {
             </div>
             <div className="main__header">
                 <h1>{header}</h1>
+            </div>
+            <div className="main__music">
+                {trending.map((single, i) => {
+                    return(
+                        <SingleCard 
+                            track={single.strTrack}
+                            album={single.strAlbum}
+                            artist={single.strArtist}
+                            cover={single.strAlbumThumb}/>
+                     )
+                })}
+                
             </div>
         </div>
     )

@@ -5,6 +5,7 @@ import Login from './components/Login/Login';
 import Navbar from './components/Navbar/Navbar';
 import Main from './components/Main/Main';
 import Player from './components/Player/Player';
+import {fetchAlbums} from './components/api/';
 
 class App extends React.Component{
   state = {
@@ -19,8 +20,16 @@ class App extends React.Component{
     error:false,
     errorMessage:'',
     menuOpen:false,
+    trending:[]
   }
 
+  async componentDidMount(){
+    const data = await fetchAlbums()
+    this.setState({
+      trending:data
+    })
+  }
+  
   handleLoginChange = (index) => {
     this.setState({
       loginActive:index
@@ -145,17 +154,20 @@ render(){
       {this.state.loggedin && 
         <div className="screen" >
           <div className="home">
+            <div className="navbar">
             <Navbar 
               handleNavbarChange={this.handleNavbarChange}
               navbarActive={this.state.navbarActive}
               />
+            </div>
             <Main 
               header={this.state.activePage}
               first={this.state.first}
               last={this.state.last}
               handleOpenMenu={this.handleOpenMenu}
               menuOpen={this.state.menuOpen}
-              handleSignOut={this.handleSignOut}/>
+              handleSignOut={this.handleSignOut}
+              trending={this.state.trending}/>
           </div>
           <div className="player">
             <Player />
