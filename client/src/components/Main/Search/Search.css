@@ -24,3 +24,7 @@
     text-align: center;
     border: 1px solid black
 }
+
+.search__icon {
+    margin-left: 10px;
+}

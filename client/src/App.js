@@ -5,7 +5,7 @@ import Login from './components/Login/Login';
 import Navbar from './components/Navbar/Navbar';
 import Main from './components/Main/Main';
 import Player from './components/Player/Player';
-import {fetchAlbums} from './components/api/';
+import {fetchAlbums, searchQuery} from './components/api/';
 
 class App extends React.Component{
   state = {
@@ -20,7 +20,9 @@ class App extends React.Component{
     error:false,
     errorMessage:'',
     menuOpen:false,
-    trending:[]
+    trending:[],
+    search:'',
+    searchResults:[]
   }
 
   async componentDidMount(){
@@ -57,11 +59,23 @@ class App extends React.Component{
         password:this.state.password
       }
       axios.get('http://localhost:5000/users', {params:{email:this.state.email}})
-      .then(res => {
+      .then( res => {
         if(res.data.rows.length > 0){
           alert('Email Already Exists! Please Enter Different Email or Sign In!')
         } else {
           axios.post('http://localhost:5000/users', newUser)
+          .then(res => {
+            const defaultLibraries = ['Made For You', 'Recently Played', 'Liked Songs', 'Albums', 'Artists', 'Podcasts']
+            
+            defaultLibraries.map(library => {
+              const userLibrary = {
+                id:res.data.rows[0].id,
+                title:library
+                }
+                axios.post('http://localhost:5000/users/library/:id', userLibrary)
+            })
+            
+          })
           alert(`New User With The Email: ${this.state.email} Has Been Registered! Thank You!`)
           this.setState({
             loginActive:0
@@ -92,23 +106,18 @@ class App extends React.Component{
           })
           alert(`Welcome Back ${this.state.first} ${this.state.last}`)
         }
-        // if(res.data.rows.length > 0){
-        //   if (this.state.password === res.data.rows[0].password){
-        //     this.setState({
-        //       first:res.data.rows[0].firstname,
-        //       last:res.data.rows[0].lastname
-        //     })
-        //     alert(`Welcome Back ${res.data.rows[0].firstname} ${res.data.rows[0].lastname}`)
-        //     this.setState({
-        //       loggedin:true
-        //     })
-        //   } else {
-        //     alert('Password incorrect, Please Try Again!')
-        //   }
-        // } else {
-        //   alert("Email Does Not Exist! Please Sign In With a Different Email Address or Sign Up! Thank You!")
-        // }
       })
+    })
+  }
+
+   handleSearch = (search) => {
+    this.setState({
+      search
+    }, async() => {
+      const searchData = await searchQuery(this.state.search)
+      this.setState({
+        searchResults:searchData
+      }, () => {console.log(this.state.searchResults)})
     })
   }
 
@@ -167,7 +176,9 @@ render(){
               handleOpenMenu={this.handleOpenMenu}
               menuOpen={this.state.menuOpen}
               handleSignOut={this.handleSignOut}
-              trending={this.state.trending}/>
+              trending={this.state.trending}
+              handleSearch={this.handleSearch}
+              search={this.state.search}/>
           </div>
           <div className="player">
             <Player />

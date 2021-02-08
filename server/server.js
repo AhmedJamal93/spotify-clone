@@ -21,9 +21,10 @@ app.post('/users', async(req,res)=>{
         // const salt = await bcrypt.genSalt()
         const {first,last,email,password} = req.body
         const hashedPassword = await bcrypt.hash(password, 10)
-        console.log(salt, hashedPassword)
+        console.log( hashedPassword)
         const newUser = await pool.query("INSERT INTO users (email, password, firstName, lastName) VALUES($1, $2, $3, $4) RETURNING *", 
         [email, hashedPassword, first, last])
+        res.json(newUser)
     } catch (error) {
         console.log(error)
     }
@@ -64,6 +65,12 @@ app.get('/users/details', async(req,res) => {
     
     console.log(userDetails.rows[0].password)
     // res.json(userDetails)
+})
+
+app.post('/users/library/:id', async(req,res) => {
+    const {id, title} = req.body
+    const newLibrary = await pool.query('INSERT INTO playlist (title, user_id) VALUES($1, $2) RETURNING *',
+    [title, id])
 })
 
 // Port

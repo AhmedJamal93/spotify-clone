@@ -4,11 +4,13 @@ import Search from './Search/Search';
 import Profile from './Profile/Profile';
 import SingleCard from './SingleCard/SingleCard';
 
-function Main({header, first, last, handleOpenMenu, menuOpen, handleSignOut, trending}) {
+function Main({header, first, last, handleOpenMenu, menuOpen, handleSignOut, trending, handleSearch, search}) {
     return (
         <div className="main">
             <div className="main__search">
-                <Search />
+                <Search 
+                    handleSearch={handleSearch}
+                    search={search}/>
                 <Profile 
                     first={first}
                     last={last}
