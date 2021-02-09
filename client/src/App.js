@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import './App.css';
 import axios from 'axios';
 import Login from './components/Login/Login';
@@ -21,7 +21,7 @@ class App extends React.Component{
     errorMessage:'',
     menuOpen:false,
     trending:[],
-    search:'',
+    search:null,
     searchResults:[]
   }
 
@@ -116,7 +116,8 @@ class App extends React.Component{
     }, async() => {
       const searchData = await searchQuery(this.state.search)
       this.setState({
-        searchResults:searchData
+        searchResults:searchData.data,
+        navbarActive:null
       }, () => {console.log(this.state.searchResults)})
     })
   }
@@ -149,9 +150,12 @@ class App extends React.Component{
     })
   }
 
+  wrapper = createRef();
+
 render(){
   return(
     <div className="app">
+      {/* SIGNIN SIGNUP SCREEN */}
       {!this.state.loggedin && 
         <Login 
           handleLoginChange={this.handleLoginChange}
@@ -160,6 +164,8 @@ render(){
           handleSignIn={this.handleSignIn}
           errorMessage={this.state.errorMessage}/>
       }
+
+      {/* LOGGEDIN MAIN SCREEN */}
       {this.state.loggedin && 
         <div className="screen" >
           <div className="home">
@@ -169,16 +175,19 @@ render(){
               navbarActive={this.state.navbarActive}
               />
             </div>
-            <Main 
-              header={this.state.activePage}
-              first={this.state.first}
-              last={this.state.last}
-              handleOpenMenu={this.handleOpenMenu}
-              menuOpen={this.state.menuOpen}
-              handleSignOut={this.handleSignOut}
-              trending={this.state.trending}
-              handleSearch={this.handleSearch}
-              search={this.state.search}/>
+            {/* <div ref={this.wrapper}> */}
+              <Main 
+                header={this.state.activePage}
+                first={this.state.first}
+                last={this.state.last}
+                handleOpenMenu={this.handleOpenMenu}
+                menuOpen={this.state.menuOpen}
+                handleSignOut={this.handleSignOut}
+                trending={this.state.trending}
+                handleSearch={this.handleSearch}
+                search={this.state.search}
+                searchResults={this.state.searchResults}/>
+            {/* </div> */}
           </div>
           <div className="player">
             <Player />
