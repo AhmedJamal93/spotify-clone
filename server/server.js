@@ -52,7 +52,8 @@ app.get('/users/details', async(req,res) => {
         if(await bcrypt.compare(password, hashedPassword)){
             const user = {
                 first:userDetails.rows[0].firstname,
-                last:userDetails.rows[0].lastname
+                last:userDetails.rows[0].lastname,
+                id:userDetails.rows[0].id
             }
             res.status(201).send(user)
             // res.send(true, first)
@@ -71,6 +72,14 @@ app.post('/users/library/:id', async(req,res) => {
     const {id, title} = req.body
     const newLibrary = await pool.query('INSERT INTO playlist (title, user_id) VALUES($1, $2) RETURNING *',
     [title, id])
+    res.json(newLibrary)
+})
+
+app.get('/users/library/:id', async(req,res) => {
+    const {id} = req.query
+    const userLibraries = await pool.query('SELECT * FROM playlist WHERE user_id = $1', [id])
+    console.log(userLibraries)
+    res.json(userLibraries)
 })
 
 // Port

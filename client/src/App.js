@@ -10,6 +10,7 @@ import {fetchAlbums, searchQuery} from './components/api/';
 class App extends React.Component{
   state = {
     loginActive:0,
+    id:0,
     first:'',
     last:'',
     email:'',
@@ -22,7 +23,8 @@ class App extends React.Component{
     menuOpen:false,
     trending:[],
     search:null,
-    searchResults:[]
+    searchResults:[],
+    libraries:[]
   }
 
   async componentDidMount(){
@@ -41,7 +43,7 @@ class App extends React.Component{
   handleNavbarChange = (index, title) => {
     this.setState({
       navbarActive:index,
-      activePage:title
+      activePage:title,
     })
   }
 
@@ -73,6 +75,9 @@ class App extends React.Component{
                 title:library
                 }
                 axios.post('http://localhost:5000/users/library/:id', userLibrary)
+                this.setState({
+                  id:res.data.rows[0].id
+                })
             })
             
           })
@@ -100,6 +105,7 @@ class App extends React.Component{
           })
         } else {
           this.setState({
+            id:res.data.id,
             first:res.data.first,
             last:res.data.last,
             loggedin:true
@@ -107,6 +113,15 @@ class App extends React.Component{
           alert(`Welcome Back ${this.state.first} ${this.state.last}`)
         }
       })
+     .then(async() => {
+       const libraries = await axios.get('http://localhost:5000/users/library/:id', {params:{id:this.state.id}})
+       .then((libraries) => {
+         console.log(libraries.data.rows)
+         this.setState({
+           libraries:libraries.data.rows
+         })
+       })
+     }) 
     })
   }
 
@@ -150,7 +165,7 @@ class App extends React.Component{
     })
   }
 
-  wrapper = createRef();
+  domNodeRef = createRef();
 
 render(){
   return(
@@ -173,6 +188,8 @@ render(){
             <Navbar 
               handleNavbarChange={this.handleNavbarChange}
               navbarActive={this.state.navbarActive}
+              id={this.state.id}
+              libraries={this.state.libraries}
               />
             </div>
             {/* <div ref={this.wrapper}> */}
@@ -186,7 +203,9 @@ render(){
                 trending={this.state.trending}
                 handleSearch={this.handleSearch}
                 search={this.state.search}
-                searchResults={this.state.searchResults}/>
+                searchResults={this.state.searchResults}
+                navbarActive={this.state.navbarActive}
+                domNodeRef={this.domNodeRef}/>
             {/* </div> */}
           </div>
           <div className="player">

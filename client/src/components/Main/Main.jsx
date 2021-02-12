@@ -4,14 +4,9 @@ import Search from './Search/Search';
 import Profile from './Profile/Profile';
 import SingleCard from './SingleCard/SingleCard';
 
-// import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-// import { Carousel } from 'react-responsive-carousel';
 
-// import Carousel, { slidesToShowPlugin } from '@brainhubeu/react-carousel';
-// import '@brainhubeu/react-carousel/lib/style.css';
-
-
-function Main({header, first, last, handleOpenMenu, menuOpen, handleSignOut, trending, handleSearch, search, searchResults}) {
+function Main({header, first, last, handleOpenMenu, menuOpen, handleSignOut, trending, handleSearch, search, searchResults, navbarActive}) {
+    
     return (
         <div className="main">
             <div className="main__search">
@@ -26,7 +21,7 @@ function Main({header, first, last, handleOpenMenu, menuOpen, handleSignOut, tre
                     handleSignOut={handleSignOut}/>
             </div>
             
-            {!search && 
+            {navbarActive != null && 
             <div>
                 <div className="main__header">
                     <h1>{header}</h1>
@@ -50,16 +45,6 @@ function Main({header, first, last, handleOpenMenu, menuOpen, handleSignOut, tre
                     <h1>Search</h1>
                 </div>
                 <div className="main__musicSearch">
-                {/* <Carousel 
-                plugins={[
-                    'arrows',
-                    {
-                        resolve: slidesToShowPlugin,
-                        options: {
-                         numberOfSlides: 2
-                        }
-                      }
-                    ]}> */}
                     {searchResults.map((single, i) => {
                         return(
                                 <SingleCard 
@@ -69,7 +54,6 @@ function Main({header, first, last, handleOpenMenu, menuOpen, handleSignOut, tre
                                     cover={single.album.cover}/>
                         )
                     })}
-                    {/* </Carousel> */}
                 </div>
             </div>
             }

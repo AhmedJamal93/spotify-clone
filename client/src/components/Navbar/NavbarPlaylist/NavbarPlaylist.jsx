@@ -2,43 +2,24 @@ import React from 'react';
 import './NavbarPlaylist.css'
 import NavbarPlaylistOption from './NavbarPlaylistOptions/NavbarPlaylistOptions';
 
-function NavbarPlaylist({handleNavbarChange, navbarActive}) {
+function NavbarPlaylist({handleNavbarChange, navbarActive, playlists}) {
+
     return (
         <div className="navbarPlaylist">
             <div className="navbarPlaylist__header">
                 YOUR LIBRARY
             </div>
             <div className="navbarPlaylist__options">
-                <NavbarPlaylistOption
-                    title='Made For You'
-                    handleNavbarChange={handleNavbarChange}
-                    index={3}
-                    navbarActive={navbarActive}/>
-                <NavbarPlaylistOption
-                    title='Recently Played'
-                    handleNavbarChange={handleNavbarChange}
-                    index={4}
-                    navbarActive={navbarActive}/>
-                <NavbarPlaylistOption
-                    title='Liked Songs'
-                    handleNavbarChange={handleNavbarChange}
-                    index={5}
-                    navbarActive={navbarActive}/>
-                <NavbarPlaylistOption
-                    title='Albums'
-                    handleNavbarChange={handleNavbarChange}
-                    index={6}
-                    navbarActive={navbarActive}/>
-                <NavbarPlaylistOption
-                    title='Artists'
-                    handleNavbarChange={handleNavbarChange}
-                    index={7}
-                    navbarActive={navbarActive}/>
-                <NavbarPlaylistOption
-                    title='Podcasts'
-                    handleNavbarChange={handleNavbarChange}
-                    index={8}
-                    navbarActive={navbarActive}/>
+                {playlists.map((playlist, i) => {
+                    return(
+                        <NavbarPlaylistOption
+                            key={i}
+                            title={playlist.title}
+                            handleNavbarChange={handleNavbarChange}
+                            index={i+3}
+                            navbarActive={navbarActive}/>
+                    )
+                })}
             </div>
         </div>
     )

@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 export const fetchAlbums = async () => {
-    const url = 'https://api.spotify.com/v1/albums'
 
     try {
         // const data = await axios.get('https://theaudiodb.p.rapidapi.com/trending.php?country=us&type=itunes&format=singles',
